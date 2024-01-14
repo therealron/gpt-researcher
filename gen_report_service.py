@@ -32,8 +32,8 @@ app.add_middleware(
 
 @app.post("/generate_report/")
 async def create_report(query: QueryItem):
-    print(query)
-    return item
+    # print(query)
+    return query
 
 @app.get("/")
 async def read_root():
