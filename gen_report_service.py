@@ -32,9 +32,12 @@ app.add_middleware(
 
 @app.post("/generate_report/")
 async def create_report(query: QueryItem):
-    global report_type
-    # print(query)
-    report = get_report(query.query, report_type)
+    # global report_type
+    # print("query.query = ",query.query)
+    # print("type = ",query)
+
+    
+    report = await get_report(query.query, report_type)
     return {"report": report}
 
 @app.get("/")
