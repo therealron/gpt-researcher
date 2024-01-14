@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from gpt_researcher import GPTResearcher
 import asyncio
 
-
+report_type = "research_report"
 async def get_report(query: str, report_type: str) -> str:
     researcher = GPTResearcher(query, report_type)
     report = await researcher.run()
@@ -32,8 +32,10 @@ app.add_middleware(
 
 @app.post("/generate_report/")
 async def create_report(query: QueryItem):
+    global report_type
     # print(query)
-    return query
+    report = get_report(query['query'], report_type)
+    return {"report": report}
 
 @app.get("/")
 async def read_root():
