@@ -25,3 +25,7 @@ app = FastAPI()
 async def create_report(query: QueryItem):
     print(query)
     return item
+
+@app.post("/")
+async def root():
+    return {"message": "Hello World"}
