@@ -34,7 +34,7 @@ app.add_middleware(
 async def create_report(query: QueryItem):
     global report_type
     # print(query)
-    report = get_report(query['query'], report_type)
+    report = get_report(query.query, report_type)
     return {"report": report}
 
 @app.get("/")
